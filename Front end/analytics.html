@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warka - Analytics Dashboard</title>
+    <link rel="stylesheet" href="analytics.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img
+            src="a_professional_log_image_.jpeg"
+            alt="Warka Logo"
+            class="logo"
+          />
+          <span class="brand-name">Warka</span>
+        </div>
+        <div class="nav-menu">
+          <a href="waste-form.html" class="nav-link">
+            <i class="fas fa-plus-circle"></i>
+            Log Waste
+          </a>
+          <a href="analytics.html" class="nav-link active">
+            <i class="fas fa-chart-bar"></i>
+            Analytics
+          </a>
+          <div class="nav-buttons">
+            <span id="welcomeUser" class="welcome-user">Welcome!</span>
+            <a href="signin.html" class="btn-secondary" id="signoutBtn">
+              <i class="fas fa-sign-out-alt"></i>
+              Sign Out
+            </a>
+          </div>
+        </div>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+    <main class="analytics-container">
+      <header class="analytics-header">
+        <div class="header-content">
+          <h1>Waste Analytics Dashboard</h1>
+          <p>Track your environmental impact and waste patterns</p>
+        </div>
+        <div class="date-filter">
+          <select id="timeRange" class="filter-select">
+            <option value="7">Last 7 Days</option>
+            <option value="30" selected>Last 30 Days</option>
+            <option value="90">Last 3 Months</option>
+            <option value="365">Last Year</option>
+            <option value="all">All Time</option>
+          </select>
+        </div>
+      </header>
+
+      <section class="summary-stats">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-trash"></i>
+          </div>
+          <div class="stat-info">
+            <h3 id="totalItems">0</h3>
+            <p>Total Items</p>
+          </div>
+          <div class="stat-trend" id="totalTrend">
+            <i class="fas fa-arrow-up"></i>
+            <span>0%</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-recycle"></i>
+          </div>
+          <div class="stat-info">
+            <h3 id="categoriesCount">0</h3>
+            <p>Categories Used</p>
+          </div>
+          <div class="stat-trend" id="categoriesTrend">
+            <i class="fas fa-minus"></i>
+            <span>0%</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <div class="stat-info">
+            <h3 id="co2Saved">0</h3>
+            <p>CO₂ Saved (kg)</p>
+          </div>
+          <div class="stat-trend" id="co2Trend">
+            <i class="fas fa-arrow-up"></i>
+            <span>0%</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <div class="stat-info">
+            <h3 id="topCategory">-</h3>
+            <p>Top Category</p>
+          </div>
+          <div class="stat-trend" id="topCategoryTrend">
+            <i class="fas fa-star"></i>
+            <span>#1</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="charts-section">
+        <div class="chart-row">
+          <div class="chart-card full-width">
+            <div class="chart-header">
+              <h3>Waste Trend Over Time</h3>
+              <div class="chart-actions">
+                <button class="chart-action-btn active" data-chart="line">
+                  <i class="fas fa-chart-line"></i>
+                </button>
+                <button class="chart-action-btn" data-chart="bar">
+                  <i class="fas fa-chart-bar"></i>
+                </button>
+              </div>
+            </div>
+            <div class="chart-container">
+              <canvas id="trendChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-row">
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3>Waste by Category</h3>
+              <button
+                class="info-btn"
+                title="Distribution of waste across different categories"
+              >
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+            <div class="chart-container">
+              <canvas id="categoryChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3>Weekly Pattern</h3>
+              <button class="info-btn" title="Average waste by day of the week">
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+            <div class="chart-container">
+              <canvas id="weeklyChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-row">
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3>Monthly Comparison</h3>
+              <button
+                class="info-btn"
+                title="Compare current month with previous month"
+              >
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+            <div class="chart-container">
+              <canvas id="monthlyChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3>Environmental Impact</h3>
+              <button
+                class="info-btn"
+                title="Estimated CO₂ savings by category"
+              >
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+            <div class="chart-container">
+              <canvas id="impactChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="insights-section">
+        <div class="insights-header">
+          <h2>📈 Waste Insights & Recommendations</h2>
+        </div>
+        <div class="insights-grid">
+          <div class="insight-card">
+            <div class="insight-icon positive">
+              <i class="fas fa-thumbs-up"></i>
+            </div>
+            <div class="insight-content">
+              <h4>Great Progress!</h4>
+              <p id="positiveInsight">
+                Your waste tracking consistency is excellent. Keep it up!
+              </p>
+            </div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-icon warning">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="insight-content">
+              <h4>Reduction Opportunity</h4>
+              <p id="warningInsight">
+                Consider reducing waste in your highest category.
+              </p>
+            </div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-icon info">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <div class="insight-content">
+              <h4>Smart Tip</h4>
+              <p id="tipInsight">
+                Try composting organic waste to reduce landfill contribution.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="export-section">
+        <div class="export-card">
+          <div class="export-content">
+            <h3>Export Your Data</h3>
+            <p>
+              Download your waste analytics for personal records or
+              sustainability reporting.
+            </p>
+            <div class="export-buttons">
+              <button id="exportCSV" class="btn-secondary">
+                <i class="fas fa-file-csv"></i>
+                Export as CSV
+              </button>
+              <button id="exportPDF" class="btn-secondary">
+                <i class="fas fa-file-pdf"></i>
+                Export as PDF
+              </button>
+            </div>
+          </div>
+          <div class="export-visual">
+            <i class="fas fa-download"></i>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="analytics.js"></script>
+  </body>
+</html>

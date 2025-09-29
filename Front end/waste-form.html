@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warka - Waste Logging</title>
+    <link rel="stylesheet" href="waste-form.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="brand-header">
+        <img id="logo" src="a_professional_log_image_.jpeg" alt="Warka Logo" />
+        <h1>Warka</h1>
+        <p class="tagline">Smart waste tracker</p>
+      </header>
+
+      <nav class="user-nav">
+        <span id="welcomeMessage" class="welcome-text">Welcome back!</span>
+        <button id="signout" class="signout-btn">Sign Out</button>
+      </nav>
+
+      <div class="dashboard-container">
+        <div class="stats-overview">
+          <div class="stat-card">
+            <h3>Today's Waste</h3>
+            <p class="stat-value" id="todayWaste">0 items</p>
+          </div>
+          <div class="stat-card">
+            <h3>This Week</h3>
+            <p class="stat-value" id="weekWaste">0 items</p>
+          </div>
+          <div class="stat-card">
+            <h3>Total Logged</h3>
+            <p class="stat-value" id="totalWaste">0 items</p>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-header">
+            <h2>Log New Waste</h2>
+            <p>Track your waste disposal activities</p>
+          </div>
+
+          <form id="wasteForm">
+            <div class="input-group">
+              <label for="category">Waste Category</label>
+              <select id="category" required>
+                <option value="">Select a category</option>
+                <option value="plastic">♻️ Plastic</option>
+                <option value="paper">📄 Paper</option>
+                <option value="glass">🥛 Glass</option>
+                <option value="metal">🔩 Metal</option>
+                <option value="ewaste">💻 E-waste</option>
+                <option value="organic">🍎 Organic</option>
+                <option value="other">📦 Other</option>
+              </select>
+            </div>
+
+            <div class="input-row">
+              <div class="input-group">
+                <label for="quantity">Quantity</label>
+                <input
+                  id="quantity"
+                  type="number"
+                  min="1"
+                  max="1000"
+                  placeholder="e.g., 5"
+                  required
+                />
+                <span class="input-unit">items</span>
+              </div>
+
+              <div class="input-group">
+                <label for="date">Date</label>
+                <input id="date" type="date" required />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="description">Description (Optional)</label>
+              <textarea
+                id="description"
+                placeholder="e.g., Plastic bottles, Food containers, etc."
+                rows="3"
+              ></textarea>
+            </div>
+
+            <button id="btn" type="submit" class="submit-btn">
+              <span class="btn-text">Add Waste Entry</span>
+              <span class="btn-icon">➕</span>
+            </button>
+          </form>
+        </div>
+
+        <div class="waste-history">
+          <div class="history-header">
+            <h3>Recent Waste Entries</h3>
+            <button id="clearHistory" class="clear-btn">Clear All</button>
+          </div>
+          <div id="wasteEntries" class="entries-list">
+            <div class="empty-state">
+              <p>No waste entries yet. Start logging your waste above!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="waste-form.js"></script>
+  </body>
+</html>

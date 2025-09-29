@@ -1,0 +1,235 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, #f4f4f4 0%, #e8f5e8 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.main-container {
+  width: 100%;
+  max-width: 420px;
+}
+
+.brand-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#logo {
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  display: block;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #2e8b57;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.tagline {
+  color: #666;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-top: 0;
+}
+
+.form-container {
+  background: white;
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-header h2 {
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.form-header p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  color: #333;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+input:focus {
+  outline: none;
+  border-color: #2e8b57;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
+}
+
+input::placeholder {
+  color: #999;
+}
+
+.forgot-password {
+  text-align: right;
+  margin-bottom: 25px;
+  margin-top: -10px;
+}
+
+.forgot-password a {
+  color: #666;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot-password a:hover {
+  color: #2e8b57;
+  text-decoration: underline;
+}
+
+#btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #2e8b57, #3cb371);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 139, 87, 0.3);
+}
+
+#btn:active {
+  transform: translateY(0);
+}
+
+.form-footer {
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.form-footer p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+a {
+  color: #2e8b57;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #1f6b3d;
+  text-decoration: underline;
+}
+
+.error {
+  border-color: #e74c3c !important;
+  background-color: #fdf2f2 !important;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  text-align: left;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 30px 20px;
+    margin: 0 10px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .form-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .forgot-password {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
